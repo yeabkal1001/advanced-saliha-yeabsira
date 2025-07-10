@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("DATABASE_USERNAME") { "rails_user" } %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") { "rails_password" } %>
+  host: <%= ENV.fetch("DATABASE_HOST") { "db" } %>
+
+development:
+  <<: *default
+  database: rails_app_development
+
+test:
+  <<: *default
+  database: rails_app_test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %> 

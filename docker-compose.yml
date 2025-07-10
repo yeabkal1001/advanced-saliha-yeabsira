@@ -1,0 +1,66 @@
+services:
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: rails_app_development
+      MYSQL_USER: rails_user
+      MYSQL_PASSWORD: rails_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  # Rails Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: mysql2://rails_user:rails_password@db:3306/rails_app_development
+      RAILS_ENV: development
+      DATABASE_HOST: db
+      DATABASE_USERNAME: rails_user
+      DATABASE_PASSWORD: rails_password
+    volumes:
+      - ./backend:/app
+      - bundle_cache:/usr/local/bundle
+    depends_on:
+      - db
+    networks:
+      - app-network
+    command: bash -c "rm -f tmp/pids/server.pid && bundle install && bundle exec rails db:create db:migrate && bundle exec rails server -b 0.0.0.0 -p 3000"
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3001:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:3000
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    command: npm run dev -- --host 0.0.0.0
+
+volumes:
+  mysql_data:
+  bundle_cache:
+
+networks:
+  app-network:
+    driver: bridge 

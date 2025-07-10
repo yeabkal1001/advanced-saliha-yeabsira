@@ -1,0 +1,31 @@
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+# Use Amazon S3 for production
+# amazon:
+#   service: S3
+#   access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+#   secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+#   region: <%= ENV['AWS_REGION'] %>
+#   bucket: <%= ENV['AWS_BUCKET'] %>
+
+# Use Google Cloud Storage for production
+# google:
+#   service: GCS
+#   project: <%= ENV['GCS_PROJECT'] %>
+#   credentials: <%= ENV['GCS_CREDENTIALS'] %>
+#   bucket: <%= ENV['GCS_BUCKET'] %>
+
+# Use Microsoft Azure Storage for production
+# azure:
+#   service: AzureStorage
+#   storage_account_name: <%= ENV['AZURE_STORAGE_ACCOUNT_NAME'] %>
+#   storage_access_key: <%= ENV['AZURE_STORAGE_ACCESS_KEY'] %>
+#   container: <%= ENV['AZURE_STORAGE_CONTAINER'] %>
+
+# Use Mirror service for development
+# mirror:
+#   service: Mirror
+#   primary: local
+#   mirrors: [amazon, google, azure] 
