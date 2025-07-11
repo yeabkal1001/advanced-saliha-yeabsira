@@ -1,4 +1,6 @@
 class Api::V1::AuthController < ApplicationController
+  # Authentication controller for user signup, signin, and signout
+  # Handles JWT token generation and user authentication
   # Remove the skip_before_action since we don't have authenticate_user anymore
   # skip_before_action :authenticate_user, only: [:signin, :signup]
 
