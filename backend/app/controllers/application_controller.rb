@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  # Base controller for all API controllers
+  # Handles user authentication and authorization
   # Remove the global before_action - let individual controllers decide
   # before_action :authenticate_user
   
