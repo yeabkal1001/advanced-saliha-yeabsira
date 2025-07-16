@@ -1,4 +1,6 @@
 class Api::V1::ProductsController < ApplicationController
+  # Products controller for managing product CRUD operations
+  # Handles product listing, creation, updates, and search functionality
   # Remove problematic callbacks for now
   # skip_before_action :require_authentication, only: [:index, :show, :search]
   # before_action :require_authentication, only: [:create, :update, :destroy]
