@@ -1,4 +1,6 @@
 class Api::V1::OrdersController < ApplicationController
+  # Orders controller for managing order lifecycle
+  # Handles order creation, updates, and seller order management
   # Public endpoints for viewing orders (requires authentication)
   # Private endpoints for creating/updating orders (requires authentication)
 
