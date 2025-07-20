@@ -1,4 +1,6 @@
 class CreateOrders < ActiveRecord::Migration[7.0]
+  # Migration for creating orders table
+  # Handles order management and checkout process
   def change
     create_table :orders do |t|
       t.string :status, default: 'pending', null: false
