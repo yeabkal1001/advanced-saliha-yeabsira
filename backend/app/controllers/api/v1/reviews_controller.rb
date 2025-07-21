@@ -1,4 +1,6 @@
 class Api::V1::ReviewsController < ApplicationController
+  # Reviews controller for managing product reviews and ratings
+  # Handles review creation, updates, and admin review management
   # Public endpoint for viewing reviews (no authentication required)
   # Private endpoints for creating/updating reviews (requires authentication)
 
