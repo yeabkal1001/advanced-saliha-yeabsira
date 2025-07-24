@@ -1,3 +1,5 @@
+# Database seeding file for development and testing
+# Creates sample users, products, and orders for the application
 # Clear existing data
 puts "Clearing existing data..."
 User.destroy_all
