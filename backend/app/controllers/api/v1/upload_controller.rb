@@ -1,4 +1,6 @@
 class Api::V1::UploadController < ApplicationController
+  # Upload controller for handling file uploads
+  # Manages image uploads for products and user avatars
   def create
     if params[:image].present?
       # Create a temporary product to attach the image
