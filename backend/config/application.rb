@@ -20,6 +20,8 @@ Bundler.require(*Rails.groups)
 
 module RailsApp
   class Application < Rails::Application
+    # Main application configuration
+    # Handles security settings, CORS, and environment-specific configurations
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
