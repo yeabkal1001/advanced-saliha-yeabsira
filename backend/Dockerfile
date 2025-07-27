@@ -1,5 +1,7 @@
 FROM ruby:3.2.2
 
+# Backend Docker configuration for Rails API
+# Handles production deployment and containerization
 # Install system dependencies
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 
